@@ -1,0 +1,769 @@
+practical 1(a)
+
+Student.java
+
+
+public class Student {
+	String name;
+	String rollNo;
+	int[] scores;
+	static String college = "TRCAC";
+
+	Student() {
+		rollNo = "000000";
+		this.scores = new int[2];
+	}
+
+	Student(String name, String rollNo) {
+		this();
+		this.name = name;
+		this.rollNo = rollNo;
+	}
+
+	Student(String name) {
+		this();
+		this.name = name;
+	}
+
+	void addScore(int s1, int s2) {
+		this.scores[0] = s1;
+		this.scores[1] = s2;
+	}
+
+	void addScore(int s1) {
+		this.scores[0] = s1;
+		this.scores[1] = 0;
+	}
+
+	int[] getScores() {
+		return this.scores;
+	}
+
+	static String getCollege() {
+		return Student.college;
+	}
+
+}
+
+
+
+
+StudentDriver.java
+
+
+
+
+
+class StudentDriver {
+	public static void main(String[] args) {
+		Student s1 = new Student();
+		Student s2 = new Student("John Doe");
+		Student s3 = new Student("Jane Doe", "2021001");
+
+		s2.addScore(45);
+		s3.addScore(56, 43);
+
+		System.out.println("Student s1");
+		System.out.println("Name: " + s1.name);
+		System.out.println("Roll No: " + s1.rollNo);
+		displayScore(s1);
+		System.out.println();
+
+		System.out.println("Student s2");
+		System.out.println("Name: " + s2.name);
+		System.out.println("Roll No: " + s2.rollNo);
+		displayScore(s2);
+		System.out.println();
+
+		System.out.println("Student s3");
+		System.out.println("Name: " + s3.name);
+		System.out.println("Roll No: " + s3.rollNo);
+		displayScore(s3);
+		System.out.println();
+	}
+
+	static void displayScore(Student s) {
+		System.out.println("Scores: ");
+		for (int x: s.scores) {
+			System.out.print(x + " ");
+		}
+		System.out.println();
+	}
+
+}
+
+
+
+practical1(b)
+
+
+Animal.jav
+
+
+public class Animal {
+	String id;
+	int age;
+	double weight;
+
+	Animal() {
+		age = 1;
+		weight = 0.0;
+	}
+
+	Animal(String id, int age, double weight) {
+		this.id = id;
+		this.age = age;
+		this.weight = weight;
+	}
+
+	void eat() {
+		System.out.println("Animal eating...");
+	}
+
+	void sleep() {
+		System.out.println("Animal sleeping...");
+	}
+
+	void makeNoise() {
+		System.out.println("Animal sound");
+	}
+
+	void roam() {
+		System.out.println("Animal roaming...");
+	}
+
+	public String toString() {
+		return this.id + " Age:" + this.age + " Weight: " + this.weight + " kg";
+	}
+}
+
+
+Canine.java
+
+
+public class Canine extends Animal {
+	Canine() {
+		super();
+	}
+
+	Canine(String id, int age, double weight) {
+		super(id, age, weight);
+	}
+
+	void eat() {
+		System.out.println("Canine eating in a pack...");
+	}
+
+	void roam() {
+		System.out.println("Canine roaming in a pack...");
+	}
+}
+
+
+Dog.java
+class Dog extends Canine {
+	Dog() {
+		super();
+	}
+
+	Dog(String id, int age, double weight) {
+		super(id, age, weight);
+	}
+
+}
+
+
+
+
+
+
+driver.java
+
+class Driver {
+	public static void main(String[] args) {
+		Dog d1 = new Dog("Tommy", 4, 5.6);
+		Canine d2 = new Dog("Bruno", 2, 2.35);
+		Animal d3 = new Dog();
+
+		System.out.println(d1);
+		d1.eat();
+		d1.sleep();
+		d1.roam();
+		d1.makeNoise();
+		System.out.println();
+
+		System.out.println(d2);
+		d2.eat();
+		d2.sleep();
+		d2.roam();
+		d2.makeNoise();
+		System.out.println();
+
+		System.out.println(d3);
+		d3.eat();
+		d3.sleep();
+		d3.roam();
+		d3.makeNoise();
+		System.out.println();
+
+	}
+}
+
+
+
+
+
+
+
+
+
+practical  2
+
+
+
+
+anumal.java
+
+
+public abstract class Animal {
+	String id;
+	int age;
+	double weight;
+
+	Animal() {
+		age = 1;
+		weight = 0.0;
+	}
+
+	Animal(String id, int age, double weight) {
+		this.id = id;
+		this.age = age;
+		this.weight = weight;
+	}
+
+	void eat() {
+		System.out.println("Animal eating...");
+	}
+
+	void sleep() {
+		System.out.println("Animal sleeping...");
+	}
+
+	abstract void makeNoise();
+
+	void roam() {
+		System.out.println("Animal roaming...");
+	}
+
+	public String toString() {
+		return this.id + " Age:" + this.age + " Weight: " + this.weight + " kg";
+	}
+}
+
+
+
+canine.java
+
+
+public abstract class Canine extends Animal {
+	Canine() {
+		super();
+	}
+
+	Canine(String id, int age, double weight) {
+		super(id, age, weight);
+	}
+
+	void eat() {
+		System.out.println("Canine eating in a pack...");
+	}
+
+	void roam() {
+		System.out.println("Canine roaming in a pack...");
+	}
+}
+
+
+dog.java
+
+
+
+class Dog extends Canine {
+	Dog() {
+		super();
+	}
+
+	Dog(String id, int age, double weight) {
+		super(id, age, weight);
+	}
+
+	void makeNoise() {
+		System.out.println("Dog barks");
+	}
+}
+
+
+driver.java
+
+class Driver {
+	public static void main(String[] args) {
+		Dog d1 = new Dog("Tommy", 4, 5.6);
+		Canine d2 = new Dog("Bruno", 2, 2.35);
+		Animal d3 = new Dog();
+
+		System.out.println(d1);
+		d1.eat();
+		d1.sleep();
+		d1.roam();
+		d1.makeNoise();
+		System.out.println();
+
+		System.out.println(d2);
+		d2.eat();
+		d2.sleep();
+		d2.roam();
+		d2.makeNoise();
+		System.out.println();
+
+		System.out.println(d3);
+		d3.eat();
+		d3.sleep();
+		d3.roam();
+		d3.makeNoise();
+		System.out.println();
+	}
+}
+
+
+
+
+
+
+
+practical 2(b)
+
+animal.java
+
+public abstract class Animal {
+	String id;
+	int age;
+	double weight;
+
+	Animal() {
+		age = 1;
+		weight = 0.0;
+	}
+
+	Animal(String id, int age, double weight) {
+		this.id = id;
+		this.age = age;
+		this.weight = weight;
+	}
+
+	void eat() {
+		System.out.println("Animal eating...");
+	}
+
+	void sleep() {
+		System.out.println("Animal sleeping...");
+	}
+
+	abstract void makeNoise();
+
+	void roam() {
+		System.out.println("Animal roaming...");
+	}
+
+	public String toString() {
+		return this.id + " Age:" + this.age + " Weight: " + this.weight + " kg";
+	}
+}
+
+
+
+canine.java
+
+
+public abstract class Canine extends Animal {
+	Canine() {
+		super();
+	}
+
+	Canine(String id, int age, double weight) {
+		super(id, age, weight);
+	}
+
+	void eat() {
+		System.out.println("Canine eating in a pack...");
+	}
+
+	void roam() {
+		System.out.println("Canine roaming in a pack...");
+	}
+}
+
+
+
+
+
+dog.java
+
+class Dog extends Canine implements Pet {
+	Dog() {
+		super();
+	}
+
+	Dog(String id, int age, double weight) {
+		super(id, age, weight);
+	}
+
+	void makeNoise() {
+		System.out.println("Dog barks");
+	}
+
+	public void beFriendly() {
+		System.out.println("I can play fetch and also do cool tricks.");
+	}
+}
+
+
+
+driver.java
+
+
+
+class Driver {
+	public static void main(String[] args) {
+		Dog d1 = new Dog("Tommy", 4, 5.6);
+		Canine d2 = new Dog("Bruno", 2, 2.35);
+		Animal d3 = new Dog();
+
+		System.out.println(d1);
+		d1.eat();
+		d1.sleep();
+		d1.roam();
+		d1.makeNoise();
+		d1.beFriendly();
+		System.out.println();
+
+		System.out.println(d2);
+		d2.eat();
+		d2.sleep();
+		d2.roam();
+		d2.makeNoise();
+		// d2.beFriendly();
+		System.out.println();
+
+		System.out.println(d3);
+		d3.eat();
+		d3.sleep();
+		d3.roam();
+		d3.makeNoise();
+		// d3.beFriendly();
+		System.out.println();
+	}
+}
+
+
+
+
+
+pet.java
+
+
+
+interface Pet {
+	public void beFriendly();
+}
+
+
+
+
+
+
+practical 3
+
+
+driver.java
+
+class Driver {
+	public static void main(String[] args) {
+		Employee e1 = null;
+		Employee e2 = null;
+		Employee e3 = null;
+
+		try {
+			e1 = new Employee();
+			e1.setName("John Doe");
+			e1.setEmpId("EMP001");
+			e1.setSalary(40000);
+			System.out.println("\n" + e1);
+		} catch (InvalidSalaryException ex) {
+			System.out.println(ex);
+			// System.out.println(ex.getMessage());
+		}
+
+		try {
+			e2 = new Employee("Peter Parker", "EMP002", 20000);
+			System.out.println("\n" + e2);
+		} catch (InvalidSalaryException ex) {
+			System.out.println("\n" + ex);
+			// System.out.println(ex.getMessage());
+		}
+
+		try {
+			e3 = new Employee("Bruce Wayne", "EMP003", -1);
+			System.out.println("\n" + e3);
+		} catch (InvalidSalaryException ex) {
+			System.out.println("\n" + ex);
+			// System.out.println(ex.getMessage());
+		}
+
+		try {
+			e1.setSalary(-45000);
+			System.out.println("\n" + e1);
+		} catch (InvalidSalaryException ex) {
+			System.out.println("\n" + ex);
+			// System.out.println(ex.getMessage());
+		}
+
+		try {
+			e3 = new Employee("Tony Stark", "EMP005", 50000);
+			System.out.println("\n" + e3);
+		}
+		catch (InvalidSalaryException ex) {
+			System.out.println("\n" + ex);
+			// System.out.println(ex.getMessage());
+		}
+	}
+}
+
+
+employee.java
+
+
+public class Employee {
+
+	private String name;
+	private String empId;
+	private double salary;
+
+	public Employee() {
+		//
+	}
+
+	public Employee(String name, String empId, double salary) throws InvalidSalaryException {
+		setName(name);
+		setEmpId(empId);
+		setSalary(salary);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmpId() {
+		return empId;
+	}
+
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) throws InvalidSalaryException {
+		if (salary < 0) {
+			throw new InvalidSalaryException("Salary cannot be " + salary + "!\nIt must be a non-negative value.");
+		}
+		this.salary = salary;
+	}
+
+	public String toString() {
+		return this.empId + "\n" + this.name + "\n$" + this.salary;
+	}
+
+}
+
+
+InvalidSalaryException.java
+
+
+
+public class InvalidSalaryException extends Exception {
+
+	public InvalidSalaryException(String msg) {
+		super(msg);
+	}
+}
+
+
+
+
+
+
+practical  4(a) usng interface
+
+  
+shuffle.java
+
+import java.util.*;
+
+public class Shuffle {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<String>();
+		
+		list.add("C");
+		list.add("C++");
+		list.add(".Net");
+		list.add("Python");
+		list.add("PHP");
+		list.add("Java");
+		
+		System.out.println(list);
+		
+        for (String a : args)
+            list.add(a);
+        Collections.shuffle(list, new Random());
+        
+		System.out.println(list);
+    }
+}
+
+
+swapvalues.java
+
+
+import java.util.*;
+
+public class swapvalues {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<String>();
+        list.add("10");
+		list.add("20");
+		list.add("30");
+		list.add("40");
+		list.add("50");
+		list.add("60");
+		
+		System.out.println("Before Swapping...");
+		System.out.println(list);
+		
+		swap(list, 2, 3);
+		
+		System.out.println("After Swapping...");
+        System.out.println(list);
+    }
+	
+	public static <E> void swap(List<E> a, int i, int j) {
+    E tmp = a.get(i);
+    a.set(i, a.get(j));
+    a.set(j, tmp);
+}
+}
+
+
+
+4(b)
+
+FindDups.java
+
+import java.util.*;
+import java.util.stream.*;
+
+public class FindDups {
+    public static void main(String[] args) {
+        Set<String> distinctWords = Arrays.asList(args).stream().collect(Collectors.toSet()); 
+		
+		/*distinctWords.add("Java");
+		distinctWords.add("C");
+		distinctWords.add("PHP");
+		distinctWords.add("C++");
+		distinctWords.add("Java");
+		distinctWords.add("PHP");		*/
+		
+        System.out.println(distinctWords.size()+ " distinct words: " + distinctWords);
+    }
+}
+
+
+FindDups1.java
+
+import java.util.*;
+
+public class FindDups1 {
+    public static void main(String[] args) {
+        Set<String> s = new HashSet<String>();
+		
+		/*s.add("Java");
+		s.add("C");
+		s.add("PHP");
+		s.add("C++");
+		s.add("Java");
+		s.add("PHP"); */
+        
+		for (String a : args)
+               s.add(a);
+        System.out.println(s.size() + " distinct words: " + s);
+    }
+}
+
+
+
+FindDups2.java
+
+
+import java.util.*;
+
+public class FindDups2 {
+    public static void main(String[] args) {
+        Set<String> uniques = new HashSet<String>();
+        Set<String> dups    = new HashSet<String>();
+
+        for (String a : args)
+            if (!uniques.add(a))
+                dups.add(a);
+
+        // Destructive set-difference
+        uniques.removeAll(dups);
+
+        System.out.println("Unique words:    " + uniques);
+        System.out.println("Duplicate words: " + dups);
+    }
+}
+
+
+
+
+
+4(c)
+
+
+Freq.java
+
+import java.util.*;
+
+public class Freq {
+    public static void main(String[] args) {
+        Map<String, Integer> m = new HashMap<String, Integer>();
+
+        // Initialize frequency table from command line
+        for (String a : args) {
+            Integer freq = m.get(a);
+            m.put(a, (freq == null) ? 1 : freq + 1);
+        }
+
+        System.out.println(m.size() + " distinct words:");
+        System.out.println(m);
+    }
+}
+
+
+
+
